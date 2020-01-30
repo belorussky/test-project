@@ -41,9 +41,12 @@ class AuthenticateController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me()
+    public function getAuthUser()
     {
-        return response()->json($this->guard()->user());
+        // return response()->json($this->guard()->user());
+        $user = JWTAuth::parseToken()->authenticate();
+ 
+        return response()->json(['user' => $user]);
     }
 
     /**
@@ -93,5 +96,17 @@ class AuthenticateController extends Controller
     {
         return Auth::guard();
     }
+
+    // public function getAuthUser(Request $request)
+    // {
+        
+    //     $this->validate($request, [
+    //         'token' => 'required'
+    //     ]);
+ 
+    //     $user = JWTAuth::authenticate($request->token);
+ 
+    //     return response()->json(['user' => $user]);
+    // }
 
 }
