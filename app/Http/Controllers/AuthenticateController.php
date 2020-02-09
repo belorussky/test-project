@@ -44,7 +44,8 @@ class AuthenticateController extends Controller
     public function getAuthUser()
     {
         // return response()->json($this->guard()->user());
-        $user = JWTAuth::parseToken()->authenticate();
+        // $user = JWTAuth::parseToken()->authenticate();
+        $user = Auth::user();
  
         return response()->json(['user' => $user]);
     }
