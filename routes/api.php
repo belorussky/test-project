@@ -3,4 +3,8 @@
 Route::post('login', 'AuthenticateController@login');
 
 //users
-Route::apiResource('user', 'Api\UsersController');
+Route::resource('user', 'Api\UsersController');
+
+Route::post('user', 'AuthenticateController@getAuthUser');
+Route::post('register' ,'AuthenticateController@register');
+
